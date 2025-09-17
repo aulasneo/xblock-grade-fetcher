@@ -2,6 +2,34 @@
 
 By adding this XBlock to a course unit you can fetch grades from an external system for a corresponding problem(s) in Open edX and another system and grade users in Open edX based on what recieved from the external system.
 
+## Installation and Setup
+
+To use the Grade Fetcher XBlock, you first need to install it in your Open edX environment and then enable it within your course.
+
+### 1. Installation
+
+Install this XBlock by adding this repository to your Open edX list of dependencies. Then rebuild the Open edX image and restart your Open edX services.
+
+### 2. Enable in Studio
+
+Once installed, you must enable the XBlock in each course where you intend to use it.
+
+1.  In Open edX Studio, navigate to the course you want to modify.
+2.  Go to **Settings** > **Advanced Settings**.
+3.  Find the policy key for **Advanced Module List**.
+4.  Add `"gradefetcher"` to the list of module keys. For example:
+
+    ```json
+    [
+        "word_cloud",
+        "gradefetcher"
+    ]
+    ```
+
+5.  Click **Save Changes** at the bottom of the page.
+
+After saving, "Grade Fetcher" will appear in the "Advanced" section when you add a new component to a unit.
+
 ## Fields
 1. Display Name: Title of the XBlock in the Studio
 2. Title: Title of the XBlock in the LMS (Title that appears to the students)
