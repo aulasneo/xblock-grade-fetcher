@@ -8,7 +8,7 @@ import requests
 from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
 from django.template import Context
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from markupsafe import Markup
 from web_fragments.fragment import Fragment
 from xblock.core import XBlock
@@ -445,7 +445,7 @@ class GradeFetcherXBlock(XBlock, StudioEditableXBlockMixin):
                     )
                     return {
                         "status": "error",
-                        "message": self.i18n_service.ugettext(
+                        "message": self.i18n_service.gettext(
                             "Authentication endpoint is not a valid url"
                         ),
                     }
