@@ -30,6 +30,29 @@ Once installed, you must enable the XBlock in each course where you intend to us
 
 After saving, "Grade Fetcher" will appear in the "Advanced" section when you add a new component to a unit.
 
+## Platform-Level Configuration
+
+Some settings for the Grade Fetcher XBlock are configured at the platform level by an Open edX administrator, not within a specific course. These settings are managed in the Django settings files (e.g., `lms.env.json` and `cms.env.json`).
+
+### Proxy Configuration
+
+If your Open edX instance needs to send outbound web requests through a proxy server, you can configure the `proxies` setting. The XBlock will automatically use this configuration for all calls to external grader and authentication endpoints.
+
+To configure this, add a `gradefetcher` entry to the `XBLOCK_SETTINGS` dictionary in your Django settings file:
+
+```json
+"XBLOCK_SETTINGS": {
+    "gradefetcher": {
+        "proxies": {
+            "http": "http://proxy.example.com:8080",
+            "https": "https://proxy.example.com:8080"
+        }
+    }
+}
+```
+
+If the `proxies` setting is not defined, the XBlock will make direct requests without a proxy.
+
 ## Fields
 1. Display Name: Title of the XBlock in the Studio
 2. Title: Title of the XBlock in the LMS (Title that appears to the students)

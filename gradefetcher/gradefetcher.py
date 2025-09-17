@@ -408,7 +408,7 @@ class GradeFetcherXBlock(XBlock, StudioEditableXBlockMixin):
         # 1. If user in studio set authentication endpoint we call it
         try:
             # Get EXTERNAL_GRADER from configuration
-            proxies = self.get_settings()["proxies"]
+            proxies = self.get_settings().get("proxies", {})
             grader_headers = {"Content-Type": "application/json"}
             if self.authentication_endpoint:
                 # 2. Make call to auth endpoint and get the token
